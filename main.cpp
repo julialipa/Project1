@@ -39,7 +39,7 @@ int main()
 	}
 	else if (sign != '+' && sign != '-' && sign != '*' && sign != '/' && sign != '%' && two == 0)
 	{
-		std::cout << "Îøèáêà";
+		std::cout << "Îøèáêà"; 
 	}
 	
 
