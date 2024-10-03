@@ -5,23 +5,34 @@ int main()
 	//setlocale(LC_ALL, "ru");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	int rub;
-	int eur = 103.19;
-	int usd = 92.41;
-	int cny = 13.15;
-	int jpy = 0.63;
-	int kzt = 0.19; 
-	int Farit = 37;
+	float rub;
+	float eur = 103.19;
+	float usd = 92.41;
+	float cny = 13.15;
+	float jpy = 0.63;
+	float kzt = 0.19; 
+	float Farit = 37;
 	int currency;
-	int choice;
-	std::cout << "Введите сколько рублей хотите обменять: \n";
-	std::cin >> rub;
-	std::cout << "eur = 103,19 рубля, usd = 92,41 рубля, cny = 13,15 рубля, jpy = 0,63 рубля, kzt = 0,19 рублей, Farit = 37 рублей\n ";
-	std::cout << "Выберите валюту в которую хотите перевести рубли : \n";
-	std::cin >> currency;
-	do {
-		std::cout << (rub / currency) - ((rub / currency) / 0, 5) << "/t Коммиссия: " << ((rub / currency) / 0, 5) << " рублей";
-	} while (true);
+	int cycle = 1;
+	do
+	{
+		char choice;
+		std::cout << "Введите сколько рублей хотите обменять: \n";
+		std::cin >> rub;
+		std::cout << "1. eur = 103.19 рубля, 2. usd = 92.41 рубля, 3. cny = 13.15 рубля, 4. jpy = 0.63 рубля, 5. kzt = 0.19 рублей, 6. Farit = 37 рублей\n ";
+		std::cout << "Выберите валюту в которую хотите перевести рубли : \n";
+		std::cin >> currency;
+		std::cout << (rub / currency) - ((rub / currency) / 0.5) << "/t Коммиссия: " << ((rub / currency) / 0.5) << " рублей";
+		cycle--;
+		std::cout << "Хотите повторить? 1 - да, 0 - нет";
+		std::cin >> choice;
+		if (choice == 1)
+		{
+			cycle++;
+		}
+
+	} while (cycle == 1);
+
 	
 	return 0;
 }
