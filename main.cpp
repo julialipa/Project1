@@ -1,42 +1,158 @@
 #include <iostream>
 #include <Windows.h>
+#include <random>
 int main()
 {
 	//setlocale(LC_ALL, "ru");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	float rub;
-	float eur = 103.19;
-	float usd = 92.41;
-	float cny = 13.15;
-	float jpy = 0.63;
-	float kzt = 0.19; 
-	float Farit = 37;
-	int currency;
-	int cycle = 1;
+	srand(time(NULL));
+	
+	int spacing1;
+	int spacing2;
+	int weight;
+	float fuel = 500;
+	int consumption;
+	int refueling;
+	
 	do
 	{
-		char choice;
-		std::cout << "Введите сколько рублей хотите обменять: \n";
-		std::cin >> rub;
-		std::cout << "1. eur = 103.19 рубля, 2. usd = 92.41 рубля, 3. cny = 13.15 рубля, 4. jpy = 0.63 рубля, 5. kzt = 0.19 рублей, 6. Farit = 37 рублей\n ";
-		std::cout << "Выберите валюту в которую хотите перевести рубли : \n";
-		std::cin >> currency;
-		std::cout << (rub / currency) - ((rub / currency) / 0.5) << "/t Коммиссия: " << ((rub / currency) / 0.5) << " рублей";
-		cycle--;
-		std::cout << "Хотите повторить? 1 - да, 0 - нет";
-		std::cin >> choice;
-		if (choice == 1)
-		{
-			cycle++;
-		}
+		std::cout << "\nВведите вес блоков питания(кг): ";
+		std::cin >> weight;
+		std::cout << "\nВведите расстояние от точки A до точки B(км): ";
+		std::cin >> spacing1;
+		std::cout << "\nВведите расстояние от точки B до точки C(км): ";
+		std::cin >> spacing2;
 
-	} while (cycle == 1);
+		if (weight <= 400 && spacing1 < 251 && spacing2 < 251 && spacing1 > 0 && spacing2 > 0 && weight > 0)
+		{
+			consumption = spacing1 * 2;
+			fuel = fuel - consumption;
+			consumption = spacing2 * 2;
+			refueling = consumption - fuel;
+			std::cout << "\nМожно ехать, нужно дозаправить в точке B: " << refueling << " литров";
+			
+		}
+		else if (weight <= 400 && spacing1 > 251 && spacing2 > 251 && spacing1 < 0 && spacing2 < 0 && weight > 0)
+		{
+			std::cout << "\n Ехать нельзя";
+			
+		};
+		
+		if (weight <= 900 && spacing1 < 101 && spacing2 < 101 && spacing1 > 0 && spacing2 > 0 && weight > 0)
+		{
+			consumption = spacing1 * 5;
+			fuel = fuel - consumption;
+			consumption = spacing2 * 5;
+			refueling = consumption - fuel;
+			std::cout << "\nМожно ехать, нужно дозаправить в точке B: " << refueling << " литров";
+			
+		}
+		else
+		{
+			std::cout << "\n Ехать нельзя";
+			
+		};
+		
+		if (weight <= 1400 && spacing1 < 62.6 && spacing2 < 62.6 && spacing1 > 0 && spacing2 > 0 && weight > 0)
+		{
+			consumption = spacing1 * 8;
+			fuel = fuel - consumption;
+			consumption = spacing2 * 8;
+			refueling = consumption - fuel;
+			std::cout << "\nМожно ехать, нужно дозаправить в точке B: " << refueling << " литров";
+			
+		}
+		else
+		{
+			std::cout << "\n Ехать нельзя";
+		};
+		
+		if (weight < 1900 && spacing1 < 45.4 && spacing2 < 45.4 && spacing1 > 0 && spacing2 > 0 && weight > 0)
+		{
+			consumption = spacing1 * 11;
+			fuel = fuel - consumption;
+			consumption = spacing2 * 11;
+			refueling = consumption - fuel;
+			std::cout << "\nМожно ехать, нужно дозаправить в точке B: " << refueling << " литров";
+			
+		}
+		else
+		{
+			std::cout << "\n Ехать нельзя";
+		
+		};
+	} while (spacing1 <= 0 || spacing2 <= 0 || weight <= 0);
+
+
+
 
 	
 	return 0;
 }
 
+//Конвертация валюты
+//int rub;
+//int eur = 103.19;
+//int usd = 92.41;
+//int cny = 13.15;
+//int jpy = 0.63;
+//int kzt = 0.19;
+//int Farit = 37;
+//int currency;
+//char choice;
+//char cycle;
+//do
+//{
+	//cycle = 1;
+	//std::cout << "Введите сколько рублей хотите обменять: \n";
+	//std::cin >> rub;
+	//std::cout << "1. eur = 103.19 рубля, \n2. usd = 92.41 рубля, \n3. cny = 13.15 рубля, \n4. jpy = 0.63 рубля, \n5. kzt = 0.19 рублей, \n6. Farit = 37 рублей\n ";
+	//std::cout << "Выберите валюту в которую хотите перевести рубли(1,2,3,4,5,6) : \n";
+	//std::cin >> choice;
+	//if (choice == 1)
+	//{
+	//	currency = eur;
+	//	std::cout << (rub / currency) - ((rub / currency) / 0.5) << "/t Коммиссия: " << ((rub / currency) / 0.5) << " рублей";
+	//	cycle--;
+	//};
+	//if (choice == 2)
+	//{
+	//	currency = usd;
+	//	std::cout << (rub / currency) - ((rub / currency) / 0.5) << "/t Коммиссия: " << ((rub / currency) / 0.5) << " рублей";
+	//	cycle--;
+	//};
+	//if (choice == 3)
+	//{
+	//	currency = cny;
+	//	std::cout << (rub / currency) - ((rub / currency) / 0.5) << "/t Коммиссия: " << ((rub / currency) / 0.5) << " рублей";
+	//	cycle--;
+	//}
+	//if (choice == 4)
+	//{
+	//	currency = jpy;
+	//	std::cout << (rub / currency) - ((rub / currency) / 0.5) << "/t Коммиссия: " << ((rub / currency) / 0.5) << " рублей";
+	//	cycle--;
+	//};
+	//if (choice == 5)
+	//{
+	//	currency = kzt;
+	//	std::cout << (rub / currency) - ((rub / currency) / 0.5) << "/t Коммиссия: " << ((rub / currency) / 0.5) << " рублей";
+	//	cycle--;
+	//};
+	//if (choice == 6)
+	//{
+	//	currency = Farit;
+	//	std::cout << (rub / currency) - ((rub / currency) / 0.5) << "/t Коммиссия: " << ((rub / currency) / 0.5) << " рублей";
+	//	cycle--;
+	//};
+	//std::cout << "Хотите повторить? 1 - да, 0 - нет: ";
+	//std::cin >> choice;
+	//if (choice == 1)
+	//{
+	//	cycle++;
+	//}
+//} while (cycle == 1);
 
 
 //Калькулятор-----------------------------------------------------------------------------------
