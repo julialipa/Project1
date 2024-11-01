@@ -3,29 +3,74 @@
 #include <random>
 
 
-
-void PrintHelloWorld()
-{
-	std::cout << "Hello world\n";
-}
-
-void PrintNumber(int number)
-{
-	std::cout << number;
-}
-
 int main()
 {
 	setlocale(LC_ALL, "ru");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	srand(time(NULL));
 
-	PrintHelloWorld();
-	PrintNumber(7);
+	float ArrPizza[] = {79,89,99,69,59,66,77};
+	float ArrSnack[] = {99,88,77,66};
+	float ArrDrink[] = {100,99,88,77,66};
+
+	float Cheeze = ArrPizza[0];
+	float Pepperony = ArrPizza[1];
+	float ChoosePizza = 0;
+	float CostPizza = 0;
+	int CountPizza = 0;
+	float TotalSumm = 0;
+	
+	while(true)
+	{
+		char Choose;
+		std::cout << "Выберите пиццу: Сырная - 79 рублей\n\t\tПепперони - 89 рублей ";
+		std::cout << "\nВыбор: ";
+		std::cin >> ChoosePizza;
+		if (ChoosePizza == 1)
+		{
+			CostPizza += ArrPizza[0];
+			CountPizza++;
+		}
+		else if (ChoosePizza == 2)
+		{
+			CostPizza += ArrPizza[1];
+			CountPizza++;
+		}
+		
+		if (CountPizza % 5 == 0)
+		{
+			CostPizza -= ChoosePizza;
+		}
+		std::cout << "\n\nВзять еще?: Да - 1\n\t    Нет - 0";
+		std::cout << "\nВыбор: ";
+		std::cin >> Choose;
+		if (Choose == '0')
+		{
+			break;
+		}
+	} 
+
+
+
+	
+
+	
+
+	
+
+
 
 	return 0;
 }
+
+
+
+
+
+
+
+
+
 
 
 
